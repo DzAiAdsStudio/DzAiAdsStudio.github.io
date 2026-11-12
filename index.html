@@ -82,10 +82,10 @@
 
       <nav class="nav" id="nav" aria-label="القائمة الرئيسية" data-fr-aria-label="Navigation principale">
         <a href="#services" data-fr="Services">الخدمات</a>
-        <a href="#influence" data-fr="Influence">المؤثرون</a>
-        <a href="#video" data-fr="Vidéo">الفيديو</a>
+        <a href="#film" data-fr="La pub">الإعلان</a>
+        <a href="#work" data-fr="Réalisations">أعمالنا</a>
         <a href="#digital" data-fr="Digital">الرقمي</a>
-        <a href="#academic" data-fr="Académique">الأكاديمي</a>
+        <a href="#team" data-fr="L'équipe">الفريق</a>
       </nav>
 
       <div class="header__tools">
@@ -118,12 +118,12 @@
               <span data-fr="Demander un devis">اطلب عرض سعر</span>
               <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
             </a>
-            <a class="btn btn--ghost btn--lg" href="#video"><span data-fr="Voir nos vidéos">شاهد فيديوهاتنا</span></a>
+            <a class="btn btn--ghost btn--lg" href="#film"><i class="ph-fill ph-play" aria-hidden="true"></i><span data-fr="Voir notre pub">شاهدوا إعلاننا</span></a>
           </div>
           <ul class="hero__facts enter" style="--i:5">
             <li style="--k:var(--orange)"><i class="ph ph-storefront" aria-hidden="true"></i><span data-fr="Pages de grandes marques algériennes">صفحات ماركات كبرى في الجزائر</span></li>
             <li style="--k:var(--pink)"><i class="ph ph-users-three" aria-hidden="true"></i><span data-fr="Un réseau d'influenceurs qui vendent">شبكة مؤثرين لهم مردود</span></li>
-            <li style="--k:var(--amber)"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Tournage, vidéo IA et montage">تصوير، ذكاء اصطناعي ومونتاج</span></li>
+            <li style="--k:var(--amber)"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Voix, image et code sous un même toit">صوت، صورة وكود تحت سقف واحد</span></li>
           </ul>
         </div>
       </div>
@@ -140,6 +140,7 @@
           <li><span data-fr="Tournage vidéo">تصوير فيديو</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
           <li><span data-fr="Montage pro">مونتاج احترافي</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
           <li><span data-fr="Vidéo IA">فيديو بالذكاء الاصطناعي</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Voix off">تعليق صوتي</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
           <li><span data-fr="Sites web">مواقع ويب</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
           <li><span data-fr="Applications">تطبيقات</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
           <li><span data-fr="Automatisation">أتمتة</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
@@ -168,9 +169,9 @@
             <i class="ph-fill ph-film-slate cell__wm" aria-hidden="true"></i>
             <span class="chip-ic"><i class="ph ph-video-camera" aria-hidden="true"></i></span>
             <h3 data-fr="Vidéos pour votre page">فيديوهات للصفحة</h3>
-            <p data-fr="Tournage en haute qualité d'image, vidéo IA et montage professionnel.">تصوير بجودة صورة عالية، فيديو بالذكاء الاصطناعي ومونتاج احترافي.</p>
-            <a class="cell__link" href="#video">
-              <span data-fr="Les trois formats">الأنواع الثلاثة</span>
+            <p data-fr="Vidéo IA, voix off enregistrée en studio et montage professionnel.">فيديو بالذكاء الاصطناعي، تعليق صوتي مسجَّل في الاستوديو ومونتاج احترافي.</p>
+            <a class="cell__link" href="#work">
+              <span data-fr="Voir les réalisations">شاهدوا الأعمال</span>
               <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
             </a>
           </article>
@@ -234,49 +235,112 @@
       </div>
     </section>
 
-    <!-- VIDEO: three formats. TODO client: drop a real <video> or still into each .reel__frame -->
-    <section class="section" id="video" data-phone="dim" data-mode="reel" style="--k:var(--amber)">
+    <!-- FILM: the Viz Zora ad. Everything in it is AI, except the voice. -->
+    <section class="section" id="film" data-phone="dim" data-mode="reel" style="--k:var(--amber)">
+      <div class="wrap film__grid">
+        <div class="film__player reveal" id="film-player">
+          <video id="film-video" src="assets/media/ad-vizzora.mp4" poster="assets/media/posters/ad-vizzora.jpg" preload="none" playsinline></video>
+          <button class="film__btn" type="button" aria-label="شغّلوا الإعلان" data-fr-aria-label="Lire la pub"><i class="ph-fill ph-play" aria-hidden="true"></i></button>
+          <span class="film__badge film__badge--a" aria-hidden="true"><i class="ph-fill ph-sparkle"></i><span data-fr="Image 100 % IA">صورة 100% ذكاء اصطناعي</span></span>
+          <span class="film__badge film__badge--b" aria-hidden="true"><i class="ph-fill ph-microphone"></i><span data-fr="Vraie voix">صوت حقيقي</span></span>
+        </div>
+
+        <div class="film__copy">
+          <p class="kicker reveal"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Notre pub, 49 secondes">إعلاننا، 49 ثانية</span></p>
+          <h2 data-split data-fr="Tout ce que vous voyez est fait par IA.">كل ما تشاهدونه ذكاء اصطناعي.</h2>
+          <p class="section__lead reveal" data-fr="Une seule chose est réelle&nbsp;: la voix. Nous avons écrit, généré, enregistré et monté cette pub nous-mêmes, pour montrer ce que nous ferons pour votre marque.">شيء واحد فقط حقيقي: الصوت. كتبنا هذا الإعلان، ولّدنا صوره، سجّلنا صوته وركّبناه بأنفسنا، لنُريكم ما سنصنعه لماركتكم.</p>
+
+          <dl class="credits">
+            <div class="panel reveal" style="--k:var(--amber)">
+              <span class="chip-ic"><i class="ph ph-sparkle" aria-hidden="true"></i></span>
+              <dt data-fr="L'image">الصورة</dt>
+              <dd data-fr="Scènes générées par IA">مشاهد مولَّدة بالذكاء الاصطناعي</dd>
+            </div>
+            <div class="panel reveal" style="--k:var(--pink);--i:1">
+              <span class="chip-ic"><i class="ph ph-microphone" aria-hidden="true"></i></span>
+              <dt data-fr="La voix">الصوت</dt>
+              <dd data-fr="Iman, enregistrée en studio">إيمان، تسجيل في الاستوديو</dd>
+            </div>
+            <div class="panel reveal" style="--k:var(--blue);--i:2">
+              <span class="chip-ic"><i class="ph ph-code" aria-hidden="true"></i></span>
+              <dt data-fr="Le montage">المونتاج</dt>
+              <dd data-fr="Sous-titres et rythme calés sur la voix">ترجمة وإيقاع مضبوطان على الصوت</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK: proof. Videos open in a player, code projects open the live site. -->
+    <section class="section" id="work" data-phone="dim" data-mode="reel" style="--k:var(--pink)">
       <div class="wrap">
         <header class="section__head">
-          <p class="kicker reveal"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Production vidéo">صناعة الفيديو</span></p>
-          <h2 data-split data-fr="Des vidéos qu'on regarde jusqu'au bout">فيديوهات تُشاهَد حتى النهاية</h2>
-          <p class="reveal" data-fr="Trois façons de produire la vidéo de votre page, selon votre produit et votre budget.">ثلاث طرق لصناعة فيديو صفحتكم، حسب منتجكم وميزانيتكم.</p>
+          <p class="kicker reveal"><i class="ph ph-seal-check" aria-hidden="true"></i><span data-fr="Preuves de travail">أعمال حقيقية</span></p>
+          <h2 data-split data-fr="Du vrai travail, pour de vrais clients">خدمة حقيقية، لزبائن حقيقيين</h2>
+          <p class="reveal" data-fr="Des pubs, des voix off, des visuels et des logiciels déjà livrés. Touchez une vignette pour la voir ou l'écouter.">إعلانات، تعليقات صوتية، تصاميم وبرامج سُلِّمت فعلاً. اضغطوا على أي عمل لمشاهدته أو سماعه.</p>
         </header>
 
-        <div class="reels">
-          <figure class="reel reveal" style="--k:var(--amber);--k2:var(--orange);--tilt:3deg">
-            <div class="reel__frame">
-              <span class="reel__play"><i class="ph-fill ph-video-camera" aria-hidden="true"></i></span>
-              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
-              <span class="reel__bar"></span>
-            </div>
-            <figcaption>
-              <h3 data-fr="Tournage haute qualité">تصوير بجودة عالية</h3>
-              <p data-fr="Des vidéos de votre produit à l'image nette, prêtes pour Reels et TikTok.">فيديوهات لمنتجكم بصورة نقيّة، جاهزة للـ Reels و TikTok.</p>
-            </figcaption>
-          </figure>
-          <figure class="reel reel--up reveal" style="--k:var(--pink);--k2:#8B5CF6;--tilt:0deg;--i:1">
-            <div class="reel__frame">
-              <span class="reel__play"><i class="ph-fill ph-sparkle" aria-hidden="true"></i></span>
-              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
-              <span class="reel__bar"></span>
-            </div>
-            <figcaption>
-              <h3 data-fr="Vidéo IA">فيديو بالذكاء الاصطناعي</h3>
-              <p data-fr="Des séquences créées avec des outils d'IA professionnels.">مشاهد تُصنع بأدوات الذكاء الاصطناعي الاحترافية.</p>
-            </figcaption>
-          </figure>
-          <figure class="reel reveal" style="--k:var(--blue);--k2:var(--mint);--tilt:-3deg;--i:2">
-            <div class="reel__frame">
-              <span class="reel__play"><i class="ph-fill ph-scissors" aria-hidden="true"></i></span>
-              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
-              <span class="reel__bar"></span>
-            </div>
-            <figcaption>
-              <h3 data-fr="Montage professionnel">مونتاج احترافي</h3>
-              <p data-fr="Coupe, rythme et titres qui accrochent dès la première seconde.">قصّ، إيقاع وعناوين تشدّ المشاهد من الثانية الأولى.</p>
-            </figcaption>
-          </figure>
+        <div class="filters reveal" role="group" aria-label="نوع العمل" data-fr-aria-label="Type de réalisation">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true"><span data-fr="Tout">الكل</span></button>
+          <button type="button" class="filter" data-filter="voice" aria-pressed="false" style="--k:var(--pink)"><i class="ph-fill ph-microphone" aria-hidden="true"></i><span data-fr="Voix off">تعليق صوتي</span></button>
+          <button type="button" class="filter" data-filter="ai" aria-pressed="false" style="--k:var(--amber)"><i class="ph-fill ph-sparkle" aria-hidden="true"></i><span data-fr="Vidéo IA">فيديو AI</span></button>
+          <button type="button" class="filter" data-filter="design" aria-pressed="false" style="--k:var(--orange)"><i class="ph-fill ph-palette" aria-hidden="true"></i><span data-fr="Design">تصميم</span></button>
+          <button type="button" class="filter" data-filter="code" aria-pressed="false" style="--k:var(--blue)"><i class="ph-fill ph-code" aria-hidden="true"></i><span data-fr="Code">كود</span></button>
+        </div>
+
+        <div class="work-grid" id="work-grid">
+            <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-rimene.mp4" style="--k:var(--pink);--i:0">
+              <span class="work__media" style="--ar:9/16"><img src="assets/media/posters/voice-rimene.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:15</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
+              <span class="work__cap"><b dir="auto">Rimene Kayali</b><span data-fr="Pub produit, image et voix">إعلان منتج، صورة وصوت</span></span>
+            </button>
+            <a class="work reveal" data-cat="code" href="https://djermanecars.com/" target="_blank" rel="noopener" style="--k:var(--blue);--i:1">
+              <span class="work__media" style="--ar:1600/1000"><img src="assets/media/dev-djermane.webp" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><span data-fr="Site en ligne">موقع مباشر</span></span><span class="work__tag" data-fr="Code">كود</span></span>
+              <span class="work__cap"><b dir="auto">Djermane Cars &amp; Motos</b><span data-fr="Marketplace auto, plus de 12 000 voitures et 57 marques">سوق سيارات، أكثر من 12,000 سيارة و57 علامة</span></span>
+            </a>
+            <button type="button" class="work reveal" data-cat="ai" data-kind="video" data-src="assets/media/ai-ramadan.mp4" style="--k:var(--amber);--i:2">
+              <span class="work__media" style="--ar:9/16"><img src="assets/media/posters/ai-ramadan.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:08</span></span><span class="work__tag" data-fr="Vidéo IA">فيديو AI</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Campagne Ramadan">حملة رمضان</b><span data-fr="Scène créée par IA">مشهد مصنوع بالذكاء الاصطناعي</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-zoom-home.mp4" style="--k:var(--pink);--i:0">
+              <span class="work__media" style="--ar:368/640"><img src="assets/media/posters/voice-zoom-home.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:46</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
+              <span class="work__cap"><b dir="auto">Zoom Home</b><span data-fr="Pub rénovation et décoration">إعلان ترميم وديكور المنازل</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="design" data-kind="image" data-src="assets/media/design-rimene.jpg" style="--k:var(--orange);--i:1">
+              <span class="work__media" style="--ar:2/3"><img src="assets/media/design-rimene.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph ph-arrows-out-simple" aria-hidden="true"></i></span><span class="work__tag" data-fr="Design">تصميم</span></span>
+              <span class="work__cap"><b dir="auto">Rimene</b><span data-fr="Affiche publicitaire produit">ملصق إعلاني للمنتج</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-amnaqe.mp4" style="--k:var(--pink);--i:2">
+              <span class="work__media" style="--ar:1/1"><img src="assets/media/posters/voice-amnaqe.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:55</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
+              <span class="work__cap"><b dir="auto">Amnaqe Promotion</b><span data-fr="Pub pour une résidence">إعلان إقامة سكنية</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="ai" data-kind="video" data-src="assets/media/ai-wall.mp4" style="--k:var(--amber);--i:0">
+              <span class="work__media" style="--ar:9/16"><img src="assets/media/posters/ai-wall.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:08</span></span><span class="work__tag" data-fr="Vidéo IA">فيديو AI</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Mur d'écrans">جدار الشاشات</b><span data-fr="Scène de la pub Viz Zora">مشهد من إعلان Viz Zora</span></span>
+            </button>
+            <a class="work reveal" data-cat="code" href="https://topplay020.github.io/Portfolio/wach-taaref/" target="_blank" rel="noopener" style="--k:var(--blue);--i:1">
+              <span class="work__media" style="--ar:16/9"><img src="assets/media/dev-wach-taaref.webp" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><span data-fr="Projet">مشروع</span></span><span class="work__tag" data-fr="Code">كود</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Wach Ta3ref">واش تعرف؟</b><span data-fr="Jeu algérien sur Google Play">لعبة جزائرية على Google Play</span></span>
+            </a>
+            <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-clinic.mp4" style="--k:var(--pink);--i:2">
+              <span class="work__media" style="--ar:416/368"><img src="assets/media/posters/voice-clinic.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:44</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Pub d'un cabinet">إعلان عيادة</b><span data-fr="Voix off pour un cabinet à Chéraga">تعليق صوتي لعيادة في الشراقة</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="ai" data-kind="video" data-src="assets/media/ai-rimene.mp4" style="--k:var(--amber);--i:0">
+              <span class="work__media" style="--ar:16/9"><img src="assets/media/posters/ai-rimene.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:06</span></span><span class="work__tag" data-fr="Vidéo IA">فيديو AI</span></span>
+              <span class="work__cap"><b dir="auto">Rimene</b><span data-fr="Plan produit en IA">لقطة منتج بالذكاء الاصطناعي</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-demo.mp4" style="--k:var(--pink);--i:1">
+              <span class="work__media" style="--ar:368/480"><img src="assets/media/posters/voice-demo.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:24</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Démo voix">ديمو صوتي</b><span data-fr="Un extrait de la voix d'Iman">عيّنة من صوت إيمان</span></span>
+            </button>
+            <button type="button" class="work reveal" data-cat="ai" data-kind="video" data-src="assets/media/ai-analysis.mp4" style="--k:var(--amber);--i:2">
+              <span class="work__media" style="--ar:9/16"><img src="assets/media/posters/ai-analysis.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:08</span></span><span class="work__tag" data-fr="Vidéo IA">فيديو AI</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Analyse de campagne">تحليل الحملة</b><span data-fr="Scène de la pub Viz Zora">مشهد من إعلان Viz Zora</span></span>
+            </button>
+            <a class="work reveal" data-cat="code" href="https://topplay020.github.io/Portfolio/" target="_blank" rel="noopener" style="--k:var(--blue);--i:0">
+              <span class="work__media" style="--ar:1536/816"><img src="assets/media/dev-stations.webp" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><span data-fr="Projet">مشروع</span></span><span class="work__tag" data-fr="Code">كود</span></span>
+              <span class="work__cap"><b dir="auto">Stations</b><span data-fr="Plateforme desktop de gestion de flotte">منصة سطح مكتب لتسيير أسطول وطني</span></span>
+            </a>
         </div>
       </div>
     </section>
@@ -311,6 +375,10 @@
               <p data-fr="Outils sur mesure et automatisation des tâches répétitives.">أدوات مخصّصة وأتمتة للمهام المتكرّرة.</p>
             </li>
           </ul>
+          <a class="cell__link reveal" href="#work" data-filter="code">
+            <span data-fr="Voir les projets livrés">شاهدوا المشاريع المنجزة</span>
+            <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -350,35 +418,76 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section section--side" id="about" data-phone="end" data-mode="feed" style="--k:var(--orange)">
+    <!-- TEAM: three people, three crafts -->
+    <section class="section" id="team" data-phone="dim" data-mode="feed" style="--k:var(--orange)">
       <div class="wrap">
-        <div class="col">
-          <p class="kicker reveal"><i class="ph ph-hand-waving" aria-hidden="true"></i><span data-fr="À propos">من نحن</span></p>
-          <h2 class="statement" data-split data-fr="Une chercheuse qui connaît les réseaux, un développeur professionnel. Une seule équipe pour votre marque.">باحثة تعرف مواقع التواصل، ومطوّر محترف. فريق واحد لماركتكم.</h2>
+        <header class="section__head">
+          <p class="kicker reveal"><i class="ph ph-hand-waving" aria-hidden="true"></i><span data-fr="L'équipe">الفريق</span></p>
+          <h2 data-split data-fr="La voix, l'image et le code.">صوت، صورة، وكود.</h2>
+          <p class="reveal" data-fr="Trois personnes, trois métiers, une seule équipe pour votre marque.">ثلاثة أشخاص، ثلاث حِرف، فريق واحد لماركتكم.</p>
+        </header>
 
-          <dl class="facts">
-            <div class="panel reveal" style="--k:var(--mint)">
-              <i class="ph ph-certificate" aria-hidden="true"></i>
-              <dt data-fr="Formation">التكوين</dt>
-              <dd data-fr="Master et plusieurs certificats scientifiques">شهادة ماستر وعدّة شهادات علمية</dd>
+        <div class="team">
+          <article class="member panel reveal" style="--k:var(--pink)">
+            <div class="member__top">
+              <span class="member__avatar" aria-hidden="true"><b>I</b><i class="ph-fill ph-microphone"></i></span>
+              <div>
+                <h3 dir="auto" data-fr="Iman">إيمان</h3>
+                <p class="member__role" data-fr="La voix">الصوت</p>
+              </div>
             </div>
-            <div class="panel reveal" style="--k:var(--blue);--i:1">
-              <i class="ph ph-article" aria-hidden="true"></i>
-              <dt data-fr="Publication">النشر العلمي</dt>
-              <dd data-fr="Un article scientifique publié">مقال علمي منشور</dd>
+            <p data-fr="Voix off pour la publicité. La voix d'Iman est la seule chose réelle de notre pub, et c'est celle que vous entendez dans les pubs de nos clients.">تعليق صوتي للإعلانات. صوت إيمان هو الشيء الحقيقي الوحيد في إعلاننا، وهو الصوت الذي تسمعونه في إعلانات زبائننا.</p>
+            <ul class="tags">
+              <li data-fr="Voix off">تعليق صوتي</li>
+              <li data-fr="Publicité">إعلانات</li>
+              <li data-fr="Darija algérienne">دارجة جزائرية</li>
+            </ul>
+            <a class="cell__link" href="#work" data-filter="voice">
+              <span data-fr="Écouter la voix">اسمعوا الصوت</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="member panel reveal" style="--k:var(--amber);--i:1">
+            <div class="member__top">
+              <span class="member__avatar" aria-hidden="true"><b>Y</b><i class="ph-fill ph-sparkle"></i></span>
+              <div>
+                <h3 dir="auto" data-fr="Yasmine">ياسمين</h3>
+                <p class="member__role" data-fr="L'image et la recherche">الصورة والبحث</p>
+              </div>
             </div>
-            <div class="panel reveal" style="--k:var(--amber);--i:2">
-              <i class="ph ph-flask" aria-hidden="true"></i>
-              <dt data-fr="Recherche">البحث</dt>
-              <dd data-fr="Projet de recherche avec une université du Québec, Canada">مشروع بحث مع جامعة في كيبك، كندا</dd>
+            <p data-fr="Images et vidéos créées par IA, et accompagnement des étudiants et chercheurs. Biologiste et chercheuse&nbsp;: master, article scientifique publié et projet de recherche avec une université du Québec.">صور وفيديوهات بالذكاء الاصطناعي، ومرافقة الطلبة والباحثين. بيولوجية وباحثة: ماستر، مقال علمي منشور ومشروع بحث مع جامعة في كيبك.</p>
+            <ul class="tags">
+              <li data-fr="Vidéo IA">فيديو AI</li>
+              <li data-fr="Design">تصميم</li>
+              <li data-fr="Accompagnement académique">مرافقة أكاديمية</li>
+            </ul>
+            <a class="cell__link" href="#work" data-filter="ai">
+              <span data-fr="Voir les vidéos">شاهدوا الفيديوهات</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="member panel reveal" style="--k:var(--blue);--i:2">
+            <div class="member__top">
+              <span class="member__avatar" aria-hidden="true"><b>T</b><i class="ph-fill ph-code"></i></span>
+              <div>
+                <h3 dir="ltr">Topplay020</h3>
+                <p class="member__role" data-fr="Le code">الكود</p>
+              </div>
             </div>
-            <div class="panel reveal" style="--k:var(--pink);--i:3">
-              <i class="ph ph-storefront" aria-hidden="true"></i>
-              <dt data-fr="Terrain">الميدان</dt>
-              <dd data-fr="Des années à gérer les pages de grandes marques">سنوات في تسيير صفحات ماركات كبرى</dd>
-            </div>
-          </dl>
+            <p data-fr="Développeur Full Stack .NET, plus de 6 ans d'expérience. Il a construit Djermane Cars, une marketplace de plus de 12 000 voitures, et le jeu Wach Ta3ref, disponible sur Google Play.">مطوّر Full Stack .NET بأكثر من 6 سنوات خبرة. بنى Djermane Cars، سوق سيارات يعرض أكثر من 12,000 سيارة، ولعبة «واش تعرف؟» المتوفرة على Google Play.</p>
+            <ul class="tags">
+              <li data-fr="Sites et applications">مواقع وتطبيقات</li>
+              <li dir="ltr">C# / .NET</li>
+              <li dir="ltr">Unity</li>
+              <li data-fr="Automatisation">أتمتة</li>
+            </ul>
+            <a class="cell__link" href="https://topplay020.github.io/Portfolio/" target="_blank" rel="noopener">
+              <span data-fr="Voir le portfolio">شاهدوا البورتفوليو</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+          </article>
         </div>
       </div>
     </section>
@@ -400,6 +509,7 @@
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Campagne d'influence">حملة مؤثرين</span></label>
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Sponsoring">سبونسور</span></label>
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Vidéo">فيديو</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Voix off">تعليق صوتي</span></label>
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Site web">موقع ويب</span></label>
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Application">تطبيق</span></label>
                 <label class="chip"><input type="checkbox" name="need"><span data-fr="Automatisation">أتمتة</span></label>
@@ -453,10 +563,11 @@
         <nav class="footer__nav" aria-label="روابط" data-fr-aria-label="Liens">
           <a href="#services" data-fr="Services">الخدمات</a>
           <a href="#influence" data-fr="Influence">المؤثرون</a>
-          <a href="#video" data-fr="Vidéo">الفيديو</a>
+          <a href="#film" data-fr="La pub">الإعلان</a>
+          <a href="#work" data-fr="Réalisations">أعمالنا</a>
           <a href="#digital" data-fr="Digital">الرقمي</a>
           <a href="#academic" data-fr="Académique">الأكاديمي</a>
-          <a href="#about" data-fr="À propos">من نحن</a>
+          <a href="#team" data-fr="L'équipe">الفريق</a>
         </nav>
         <ul class="socials" hidden aria-label="حساباتنا" data-fr-aria-label="Nos réseaux">
             <li hidden><a data-contact="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-fill ph-instagram-logo" aria-hidden="true"></i></a></li>
@@ -469,6 +580,13 @@
       <p class="footer__mark" aria-hidden="true">Viz Zora</p>
     </div>
   </footer>
+
+  <!-- player for the work tiles -->
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox__close" type="button" aria-label="إغلاق" data-fr-aria-label="Fermer"><i class="ph ph-x" aria-hidden="true"></i></button>
+    <div class="lightbox__media"></div>
+    <div class="lightbox__cap"><b dir="auto"></b><span></span></div>
+  </dialog>
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/phone.js"></script>

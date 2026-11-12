@@ -253,6 +253,99 @@
     });
   }
 
+  /* ---------- the ad: one tap plays it with sound ---------- */
+  var filmPlayer = document.getElementById('film-player');
+  var filmVideo = document.getElementById('film-video');
+  if (filmPlayer && filmVideo) {
+    filmPlayer.querySelector('.film__btn').addEventListener('click', function () {
+      filmVideo.controls = true;
+      filmVideo.play();
+    });
+    filmVideo.addEventListener('play', function () { filmPlayer.classList.add('is-playing'); });
+    filmVideo.addEventListener('ended', function () {
+      filmPlayer.classList.remove('is-playing');
+      filmVideo.controls = false;
+      filmVideo.load(); // back to the poster
+    });
+  }
+
+  /* ---------- work: filters, hover previews, and a player ---------- */
+  var grid = document.getElementById('work-grid');
+  var lightbox = document.getElementById('lightbox');
+  if (grid) {
+    var tiles = all('.work', grid);
+    var filters = all('.filter');
+
+    var applyFilter = function (cat) {
+      filters.forEach(function (f) { f.setAttribute('aria-pressed', String(f.dataset.filter === cat)); });
+      tiles.forEach(function (tile) {
+        tile.hidden = cat !== 'all' && tile.dataset.cat !== cat;
+        if (!tile.hidden) tile.classList.add('is-in');
+      });
+    };
+    filters.forEach(function (f) {
+      f.addEventListener('click', function () { applyFilter(f.dataset.filter); });
+    });
+    // links elsewhere on the page can open the gallery on one craft
+    all('a[data-filter]').forEach(function (a) {
+      a.addEventListener('click', function () { applyFilter(a.dataset.filter); });
+    });
+
+    // desktop: a silent preview while the pointer rests on a video tile
+    if (finePointer && !reduceMotion) {
+      tiles.forEach(function (tile) {
+        if (tile.dataset.kind !== 'video') return;
+        var preview = null;
+        tile.addEventListener('pointerenter', function () {
+          if (preview) return;
+          preview = document.createElement('video');
+          preview.muted = true; preview.loop = true; preview.playsInline = true;
+          preview.src = tile.dataset.src;
+          tile.querySelector('.work__media').insertBefore(preview, tile.querySelector('.work__play'));
+          var p = preview.play();
+          if (p && p.catch) p.catch(function () {});
+        });
+        tile.addEventListener('pointerleave', function () {
+          if (preview) { preview.pause(); preview.remove(); preview = null; }
+        });
+      });
+    }
+
+    if (lightbox && lightbox.showModal) {
+      var holder = lightbox.querySelector('.lightbox__media');
+      var capTitle = lightbox.querySelector('.lightbox__cap b');
+      var capText = lightbox.querySelector('.lightbox__cap span');
+
+      var closeBox = function () { if (lightbox.open) lightbox.close(); };
+      lightbox.addEventListener('close', function () { holder.textContent = ''; });
+      lightbox.querySelector('.lightbox__close').addEventListener('click', closeBox);
+      lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeBox(); });
+
+      tiles.forEach(function (tile) {
+        if (!tile.dataset.kind) return; // code projects are plain links
+        tile.addEventListener('click', function () {
+          var media;
+          if (tile.dataset.kind === 'video') {
+            media = document.createElement('video');
+            media.controls = true; media.autoplay = true; media.playsInline = true;
+            var ar = (tile.querySelector('.work__media').style.getPropertyValue('--ar') || '9/16').split('/');
+            if (parseFloat(ar[0]) >= parseFloat(ar[1])) media.className = 'is-wide';
+            if (filmVideo) filmVideo.pause();
+          } else {
+            media = document.createElement('img');
+            media.alt = '';
+          }
+          media.src = tile.dataset.src;
+          holder.textContent = '';
+          holder.appendChild(media);
+          capTitle.textContent = tile.querySelector('.work__cap b').textContent;
+          capText.textContent = tile.querySelector('.work__cap span').textContent;
+          lightbox.showModal();
+        });
+      });
+    }
+  }
+
   /* ---------- footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

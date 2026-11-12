@@ -34,17 +34,26 @@ Each section carries two attributes:
 The screens are drawn in `SCREENS` in `assets/js/phone.js`, on a 360 x 780 grid, with shapes only
 (no text), so they work in both languages.
 
+## Media
+
+Web-ready files live in `assets/media/` (about 23 MB): the Viz Zora ad at 720p, the voice-over and AI
+clips, the Rimene poster, three screenshots from the developer's portfolio, and one poster frame per
+video in `assets/media/posters/`. The raw sources (`ad/`, `assets/Iman/`, `assets/Yasmine/`) stay out of
+the repository through `.gitignore`.
+
+To add a piece of work, copy a `.work` tile in the `#work` section of `index.html`: `data-cat` is the
+filter (`voice`, `ai`, `design`, `code`), `data-kind` is `video` or `image`, `data-src` is the file,
+and `--ar` is its width/height. Code projects are plain links.
+
 ## Things to fill in before going live
 
-- **Contact details and socials**: `CONFIG` at the top of `assets/js/main.js` (WhatsApp number, Instagram,
-  Facebook and TikTok URLs, phone, e-mail). Each one appears in the contact section, and the socials also
-  appear as round icons in the footer, as soon as its value is set; empty ones stay hidden. Until the
-  WhatsApp number is set, the quote form opens WhatsApp without a recipient.
-- **Videos**: the three reel tiles in the video section are coloured stand-ins. Put a real `<video>`
-  or still inside each `.reel__frame` (see the `TODO client` comment in `index.html`).
-- **Logo**: the half-sun mark and the "Viz Zora" wordmark are placeholders for the client's logo.
-- **Fonts and icons** load from Google Fonts and unpkg (Phosphor icons). Copy them into `assets/`
-  before publishing if the site must not depend on those services.
+- **Contact details**: `CONFIG` at the top of `assets/js/main.js` (WhatsApp, Instagram, Facebook,
+  TikTok, phone, e-mail). Until the WhatsApp number is set, the quote form opens WhatsApp without a
+  recipient.
+- **Client permission**: the gallery shows ads made for Rimene, Zoom Home, Amnaqe Promotion and a
+  clinic. Check each client is happy to appear before promoting the site.
+- **Logo**: the half-sun mark and the "Viz Zora" wordmark are placeholders for the real logo.
+- **Fonts and icons** load from Google Fonts and unpkg (Phosphor icons).
 
 ## Editing text
 
