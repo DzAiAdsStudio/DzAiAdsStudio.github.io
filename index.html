@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Viz Zora · وكالة اتصال وحلول رقمية</title>
+  <meta name="description" content="Viz Zora وكالة اتصال جزائرية: تسيير صفحات الماركات، حملات المؤثرين، فيديوهات احترافية، حلول رقمية ومرافقة أكاديمية.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#08060D">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Viz Zora">
+  <meta property="og:title" content="Viz Zora · وكالة اتصال وحلول رقمية">
+  <meta property="og:description" content="تسيير صفحات الماركات، حملات المؤثرين وفيديوهات احترافية في الجزائر.">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400..900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+  <!-- Icons: Phosphor (MIT), regular and fill weights -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>
+    // before paint: flag JS, restore the language, play the intro once per visit
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var l = q || localStorage.getItem('vz-lang');
+        if (l === 'fr') { d.lang = 'fr'; d.dir = 'ltr'; }
+      } catch (e) {}
+      var seen = false;
+      try { seen = sessionStorage.getItem('vz-intro') === '1'; } catch (e) {}
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!seen && !reduce) d.classList.add('is-loading');
+      // safety net: never leave the page hidden if the main script fails
+      setTimeout(function () { d.classList.remove('is-loading'); d.classList.add('is-ready'); }, 4500);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main" data-fr="Aller au contenu">انتقل إلى المحتوى</a>
+
+  <div class="ambient" aria-hidden="true"></div>
+
+  <!-- intro: the mark rises, then the page enters -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark"><span class="loader__sun"></span></div>
+    <p class="loader__name" dir="ltr">Viz Zora</p>
+    <span class="loader__bar"></span>
+  </div>
+
+  <!-- the phone: one object that follows the page and changes its screen with each section -->
+  <div class="stage" id="stage" aria-hidden="true">
+    <div class="scene" id="scene">
+      <div class="scene__glow"></div>
+      <div class="phone" id="phone">
+        <div class="phone__face phone__face--back">
+          <span class="phone__lens"></span><span class="phone__lens"></span>
+          <span class="phone__logo"></span>
+        </div>
+        <div class="phone__face phone__face--front">
+          <canvas id="screen" width="720" height="1560"></canvas>
+          <span class="phone__island"></span>
+          <span class="phone__sheen"></span>
+        </div>
+      </div>
+      <div class="orbit" id="orbit"></div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap header__row">
+      <a class="brand" href="#top" aria-label="Viz Zora">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name" dir="ltr">Viz Zora</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="القائمة الرئيسية" data-fr-aria-label="Navigation principale">
+        <a href="#services" data-fr="Services">الخدمات</a>
+        <a href="#influence" data-fr="Influence">المؤثرون</a>
+        <a href="#video" data-fr="Vidéo">الفيديو</a>
+        <a href="#digital" data-fr="Digital">الرقمي</a>
+        <a href="#academic" data-fr="Académique">الأكاديمي</a>
+      </nav>
+
+      <div class="header__tools">
+        <div class="lang" role="group" aria-label="اللغة" data-fr-aria-label="Langue">
+          <button type="button" class="lang__btn" data-lang="ar" aria-pressed="true" lang="ar" aria-label="العربية">ع</button>
+          <button type="button" class="lang__btn" data-lang="fr" aria-pressed="false" lang="fr" aria-label="Français">FR</button>
+        </div>
+        <a class="btn btn--accent header__cta" href="#contact"><span data-fr="Demander un devis">اطلب عرض سعر</span></a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="القائمة" data-fr-aria-label="Menu">
+          <i class="ph ph-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="top" data-phone="hero" data-mode="feed">
+      <div class="wrap">
+        <div class="col hero__copy">
+          <p class="kicker enter" style="--i:0"><span class="kicker__pulse" aria-hidden="true"></span><span data-fr="Boîte de communication, Algérie">وكالة اتصال، الجزائر</span></p>
+          <h1 class="hero__title">
+            <span class="line enter" style="--i:1"><span data-fr="Votre page grandit.">صفحتكم تكبر.</span></span>
+            <span class="line enter" style="--i:2"><span class="slab" data-fr="Vos ventes aussi.">مبيعاتكم ترتفع.</span></span>
+          </h1>
+          <p class="hero__lead enter" style="--i:3" data-fr="Viz Zora, boîte de communication algérienne&nbsp;: gestion de pages, campagnes d'influence et vidéos qui vendent.">Viz Zora وكالة اتصال جزائرية: نسيّر صفحات الماركات، ننظّم حملات المؤثرين ونصنع فيديوهات تبيع.</p>
+          <div class="hero__cta enter" style="--i:4">
+            <a class="btn btn--accent btn--lg" href="#contact">
+              <span data-fr="Demander un devis">اطلب عرض سعر</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#video"><span data-fr="Voir nos vidéos">شاهد فيديوهاتنا</span></a>
+          </div>
+          <ul class="hero__facts enter" style="--i:5">
+            <li style="--k:var(--orange)"><i class="ph ph-storefront" aria-hidden="true"></i><span data-fr="Pages de grandes marques algériennes">صفحات ماركات كبرى في الجزائر</span></li>
+            <li style="--k:var(--pink)"><i class="ph ph-users-three" aria-hidden="true"></i><span data-fr="Un réseau d'influenceurs qui vendent">شبكة مؤثرين لهم مردود</span></li>
+            <li style="--k:var(--amber)"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Tournage, vidéo IA et montage">تصوير، ذكاء اصطناعي ومونتاج</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="hero__hint enter" style="--i:7" aria-hidden="true"><i class="ph-fill ph-heart"></i><span data-fr="Touchez le téléphone">اضغطوا على الهاتف</span></p>
+    </section>
+
+    <!-- The one marquee of the page: the breadth of the offer -->
+    <div class="marquee">
+      <div class="marquee__track">
+        <ul class="marquee__group">
+          <li><span data-fr="Gestion de pages">تسيير الصفحات</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Campagnes d'influence">حملات المؤثرين</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Sponsoring">سبونسور</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Tournage vidéo">تصوير فيديو</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Montage pro">مونتاج احترافي</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Vidéo IA">فيديو بالذكاء الاصطناعي</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Sites web">مواقع ويب</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Applications">تطبيقات</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+          <li><span data-fr="Automatisation">أتمتة</span><i class="ph-fill ph-star-four" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVICES: bento, five cells for five services -->
+    <section class="section" id="services" data-phone="dim" data-mode="feed" style="--k:var(--orange)">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="kicker reveal"><i class="ph ph-squares-four" aria-hidden="true"></i><span data-fr="L'agence">خدمات الوكالة</span></p>
+          <h2 data-split data-fr="Tout pour que votre page vende">كل ما تحتاجه صفحتكم لتبيع</h2>
+          <p class="reveal" data-fr="Du premier post à la campagne, une seule équipe pilote votre présence sur les réseaux.">من أول منشور إلى الحملة الإعلانية، فريق واحد يسيّر حضوركم على مواقع التواصل.</p>
+        </header>
+
+        <div class="bento">
+          <article class="cell cell--sun cell--pages reveal">
+            <i class="ph-fill ph-storefront cell__wm" aria-hidden="true"></i>
+            <span class="chip-ic"><i class="ph ph-layout" aria-hidden="true"></i></span>
+            <h3 data-fr="Gestion de pages">تسيير الصفحات</h3>
+            <p data-fr="Nous gérons vos pages au quotidien, avec l'expérience acquise auprès de grandes marques du marché algérien.">نسيّر صفحات ماركتكم يومياً، بخبرة اكتسبناها مع ماركات كبرى في السوق الجزائرية.</p>
+          </article>
+
+          <article class="cell panel cell--video reveal" style="--k:var(--amber);--i:1">
+            <i class="ph-fill ph-film-slate cell__wm" aria-hidden="true"></i>
+            <span class="chip-ic"><i class="ph ph-video-camera" aria-hidden="true"></i></span>
+            <h3 data-fr="Vidéos pour votre page">فيديوهات للصفحة</h3>
+            <p data-fr="Tournage en haute qualité d'image, vidéo IA et montage professionnel.">تصوير بجودة صورة عالية، فيديو بالذكاء الاصطناعي ومونتاج احترافي.</p>
+            <a class="cell__link" href="#video">
+              <span data-fr="Les trois formats">الأنواع الثلاثة</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="cell panel cell--accounts reveal" style="--k:var(--mint)">
+            <i class="ph-fill ph-trend-up cell__wm" aria-hidden="true"></i>
+            <span class="chip-ic"><i class="ph ph-user-plus" aria-hidden="true"></i></span>
+            <h3 data-fr="Création et croissance de comptes">إنشاء الحسابات وتنميتها</h3>
+            <p data-fr="Nous créons votre compte de zéro et le pilotons pour faire grandir vos abonnés.">ننشئ حسابكم من الصفر ونسيّره لرفع عدد المتابعين.</p>
+          </article>
+
+          <article class="cell panel cell--sponsor reveal" style="--k:var(--blue);--i:1">
+            <i class="ph-fill ph-megaphone cell__wm" aria-hidden="true"></i>
+            <span class="chip-ic"><i class="ph ph-megaphone" aria-hidden="true"></i></span>
+            <h3 data-fr="Sponsoring">السبونسور</h3>
+            <p data-fr="Des publicités sponsorisées qui touchent les bons clients pour votre produit.">إعلانات مموّلة تصل إلى الزبون المناسب لمنتجكم.</p>
+          </article>
+
+          <article class="cell panel cell--influence reveal" style="--k:var(--pink)">
+            <i class="ph-fill ph-users-three cell__wm" aria-hidden="true"></i>
+            <span class="chip-ic"><i class="ph ph-users-three" aria-hidden="true"></i></span>
+            <div class="cell__body">
+              <h3 data-fr="Campagnes d'influence">حملات المؤثرين</h3>
+              <p data-fr="Le nombre d'influenceurs voulu&nbsp;: nous les choisissons, les gérons et les suivons jusqu'à la publication.">العدد الذي تريدونه من المؤثرين: نختارهم، نسيّرهم ونتابعهم حتى النشر.</p>
+            </div>
+            <a class="cell__link" href="#influence">
+              <span data-fr="Comment se passe une campagne">كيف تسير الحملة</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFLUENCE: the phone shows the network -->
+    <section class="section section--side" id="influence" data-phone="start" data-mode="network" style="--k:var(--pink)">
+      <div class="wrap">
+        <div class="col">
+          <p class="kicker reveal"><i class="ph ph-users-three" aria-hidden="true"></i><span data-fr="Marketing d'influence">حملات المؤثرين</span></p>
+          <h2 data-split data-fr="Un nom connu des influenceurs">اسم معروف بين المؤثرين</h2>
+          <p class="section__lead reveal" data-fr="Nous travaillons avec des influenceuses et influenceurs à grande ou moyenne audience, choisis pour leur retour réel sur les ventes.">نعمل مع مؤثرين ومؤثرات بمتابعة عالية أو متوسطة، نختارهم لمردودهم الحقيقي على المبيعات.</p>
+
+          <ol class="steps">
+            <li class="step panel reveal">
+              <span class="chip-ic"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></span>
+              <h3 data-fr="Vous fixez le nombre">أنتم تحدّدون العدد</h3>
+              <p data-fr="Dites-nous combien d'influenceurs vous voulez pour votre produit, nous proposons les profils adaptés.">قولوا لنا كم مؤثراً تريدون لمنتجكم، ونحن نقترح الأنسب.</p>
+            </li>
+            <li class="step panel reveal" style="--i:1">
+              <span class="chip-ic"><i class="ph ph-handshake" aria-hidden="true"></i></span>
+              <h3 data-fr="Nous gérons tout">نحن نسيّر كل شيء</h3>
+              <p data-fr="Accord, brief, tournage, publication&nbsp;: notre équipe suit chaque influenceur.">الاتفاق، البريف، التصوير والنشر: فريقنا يتابع كل مؤثر.</p>
+            </li>
+            <li class="step panel reveal" style="--i:2">
+              <span class="chip-ic"><i class="ph ph-chart-line-up" aria-hidden="true"></i></span>
+              <h3 data-fr="Un suivi avec des outils modernes">متابعة بتطبيقات حديثة</h3>
+              <p data-fr="Votre campagne est organisée et suivie avec des applications modernes, du premier jour au dernier post.">حملتكم منظَّمة ومتابَعة بتطبيقات حديثة، من أول يوم إلى آخر منشور.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO: three formats. TODO client: drop a real <video> or still into each .reel__frame -->
+    <section class="section" id="video" data-phone="dim" data-mode="reel" style="--k:var(--amber)">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="kicker reveal"><i class="ph ph-film-slate" aria-hidden="true"></i><span data-fr="Production vidéo">صناعة الفيديو</span></p>
+          <h2 data-split data-fr="Des vidéos qu'on regarde jusqu'au bout">فيديوهات تُشاهَد حتى النهاية</h2>
+          <p class="reveal" data-fr="Trois façons de produire la vidéo de votre page, selon votre produit et votre budget.">ثلاث طرق لصناعة فيديو صفحتكم، حسب منتجكم وميزانيتكم.</p>
+        </header>
+
+        <div class="reels">
+          <figure class="reel reveal" style="--k:var(--amber);--k2:var(--orange);--tilt:3deg">
+            <div class="reel__frame">
+              <span class="reel__play"><i class="ph-fill ph-video-camera" aria-hidden="true"></i></span>
+              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
+              <span class="reel__bar"></span>
+            </div>
+            <figcaption>
+              <h3 data-fr="Tournage haute qualité">تصوير بجودة عالية</h3>
+              <p data-fr="Des vidéos de votre produit à l'image nette, prêtes pour Reels et TikTok.">فيديوهات لمنتجكم بصورة نقيّة، جاهزة للـ Reels و TikTok.</p>
+            </figcaption>
+          </figure>
+          <figure class="reel reel--up reveal" style="--k:var(--pink);--k2:#8B5CF6;--tilt:0deg;--i:1">
+            <div class="reel__frame">
+              <span class="reel__play"><i class="ph-fill ph-sparkle" aria-hidden="true"></i></span>
+              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
+              <span class="reel__bar"></span>
+            </div>
+            <figcaption>
+              <h3 data-fr="Vidéo IA">فيديو بالذكاء الاصطناعي</h3>
+              <p data-fr="Des séquences créées avec des outils d'IA professionnels.">مشاهد تُصنع بأدوات الذكاء الاصطناعي الاحترافية.</p>
+            </figcaption>
+          </figure>
+          <figure class="reel reveal" style="--k:var(--blue);--k2:var(--mint);--tilt:-3deg;--i:2">
+            <div class="reel__frame">
+              <span class="reel__play"><i class="ph-fill ph-scissors" aria-hidden="true"></i></span>
+              <span class="reel__side" aria-hidden="true"><i class="ph-fill ph-heart"></i><i class="ph-fill ph-chat-circle"></i><i class="ph-fill ph-share-fat"></i></span>
+              <span class="reel__bar"></span>
+            </div>
+            <figcaption>
+              <h3 data-fr="Montage professionnel">مونتاج احترافي</h3>
+              <p data-fr="Coupe, rythme et titres qui accrochent dès la première seconde.">قصّ، إيقاع وعناوين تشدّ المشاهد من الثانية الأولى.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIGITAL: the phone shows code -->
+    <section class="section section--side" id="digital" data-phone="end" data-mode="code" style="--k:var(--blue)">
+      <div class="wrap">
+        <div class="col">
+          <p class="kicker reveal"><i class="ph ph-code" aria-hidden="true"></i><span data-fr="Pôle digital">الحلول الرقمية</span></p>
+          <h2 data-split data-fr="Un développeur pro, des solutions sur mesure">مطوّر محترف، حلول على المقاس</h2>
+          <p class="section__lead reveal" data-fr="Sites, applications et outils construits pour votre activité.">مواقع، تطبيقات وأدوات تُبنى خصيصاً لنشاطكم.</p>
+
+          <ul class="rows">
+            <li class="row panel reveal">
+              <span class="chip-ic"><i class="ph ph-globe" aria-hidden="true"></i></span>
+              <h3 data-fr="Sites web">مواقع ويب</h3>
+              <p data-fr="Sites personnels et sites d'entreprise.">مواقع شخصية ومواقع خاصة بالشركات.</p>
+            </li>
+            <li class="row panel reveal" style="--i:1">
+              <span class="chip-ic"><i class="ph ph-device-mobile" aria-hidden="true"></i></span>
+              <h3 data-fr="Applications mobiles">تطبيقات الهاتف</h3>
+              <p data-fr="Applications iOS et Android.">تطبيقات iOS و Android.</p>
+            </li>
+            <li class="row panel reveal" style="--i:2">
+              <span class="chip-ic"><i class="ph ph-desktop" aria-hidden="true"></i></span>
+              <h3 data-fr="Applications desktop">تطبيقات سطح المكتب</h3>
+              <p data-fr="Des logiciels pour ordinateur, adaptés à votre façon de travailler.">برامج للحاسوب تناسب طريقة عملكم.</p>
+            </li>
+            <li class="row panel reveal" style="--i:3">
+              <span class="chip-ic"><i class="ph ph-lightning" aria-hidden="true"></i></span>
+              <h3 data-fr="Outils et automatisation">أدوات وأتمتة</h3>
+              <p data-fr="Outils sur mesure et automatisation des tâches répétitives.">أدوات مخصّصة وأتمتة للمهام المتكرّرة.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMIC: the phone shows a thesis being structured -->
+    <section class="section section--side" id="academic" data-phone="start" data-mode="doc" style="--k:var(--mint)">
+      <div class="wrap">
+        <div class="col">
+          <p class="kicker reveal"><i class="ph ph-graduation-cap" aria-hidden="true"></i><span data-fr="Accompagnement académique">المرافقة الأكاديمية</span></p>
+          <h2 data-split data-fr="Votre recherche, structurée du début à la fin">بحثكم العلمي، منظَّم من البداية إلى النهاية</h2>
+          <p class="section__lead reveal" data-fr="Un accompagnement méthodologique assuré par une chercheuse algérienne, titulaire d'un master et auteure d'un article scientifique publié.">مرافقة منهجية تقدّمها باحثة جزائرية، حاصلة على الماستر ولها مقال علمي منشور.</p>
+
+          <div class="acc reveal">
+            <details class="panel" name="academic" open>
+              <summary><span data-fr="Mémoires">مذكرات التخرج</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+              <p data-fr="Nous vous accompagnons sur la méthodologie, le plan et la structure du mémoire, jusqu'à la soutenance.">نرافقكم في المنهجية، الخطة وهيكلة المذكرة حتى يوم المناقشة.</p>
+            </details>
+            <details class="panel" name="academic">
+              <summary><span data-fr="Thèses de doctorat">أطروحات الدكتوراه</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+              <p data-fr="Organisation de la thèse du début à la fin&nbsp;: plan, chapitres, références et mise en forme.">تنظيم الأطروحة من البداية إلى النهاية: الخطة، الفصول، المراجع والتنسيق.</p>
+            </details>
+            <details class="panel" name="academic">
+              <summary><span data-fr="Recherches, tous niveaux">بحوث لكل الأطوار</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+              <p data-fr="Un encadrement pour les travaux de recherche, à tous les niveaux d'études.">توجيه في البحوث العلمية لكل الأطوار الدراسية.</p>
+            </details>
+            <details class="panel" name="academic">
+              <summary><span data-fr="Pour les enseignants">للأساتذة</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+              <p data-fr="Organisation des cours et résumés présentés de façon captivante.">تنظيم الدروس وملخصات تُقدَّم بطريقة مشوّقة.</p>
+            </details>
+          </div>
+
+          <p class="note reveal">
+            <i class="ph ph-info" aria-hidden="true"></i>
+            <span data-fr="Nous vous guidons sur la méthode et l'organisation. Le travail reste le vôtre.">نوجّهكم في المنهجية والتنظيم. العمل يبقى عملكم.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--side" id="about" data-phone="end" data-mode="feed" style="--k:var(--orange)">
+      <div class="wrap">
+        <div class="col">
+          <p class="kicker reveal"><i class="ph ph-hand-waving" aria-hidden="true"></i><span data-fr="À propos">من نحن</span></p>
+          <h2 class="statement" data-split data-fr="Une chercheuse qui connaît les réseaux, un développeur professionnel. Une seule équipe pour votre marque.">باحثة تعرف مواقع التواصل، ومطوّر محترف. فريق واحد لماركتكم.</h2>
+
+          <dl class="facts">
+            <div class="panel reveal" style="--k:var(--mint)">
+              <i class="ph ph-certificate" aria-hidden="true"></i>
+              <dt data-fr="Formation">التكوين</dt>
+              <dd data-fr="Master et plusieurs certificats scientifiques">شهادة ماستر وعدّة شهادات علمية</dd>
+            </div>
+            <div class="panel reveal" style="--k:var(--blue);--i:1">
+              <i class="ph ph-article" aria-hidden="true"></i>
+              <dt data-fr="Publication">النشر العلمي</dt>
+              <dd data-fr="Un article scientifique publié">مقال علمي منشور</dd>
+            </div>
+            <div class="panel reveal" style="--k:var(--amber);--i:2">
+              <i class="ph ph-flask" aria-hidden="true"></i>
+              <dt data-fr="Recherche">البحث</dt>
+              <dd data-fr="Projet de recherche avec une université du Québec, Canada">مشروع بحث مع جامعة في كيبك، كندا</dd>
+            </div>
+            <div class="panel reveal" style="--k:var(--pink);--i:3">
+              <i class="ph ph-storefront" aria-hidden="true"></i>
+              <dt data-fr="Terrain">الميدان</dt>
+              <dd data-fr="Des années à gérer les pages de grandes marques">سنوات في تسيير صفحات ماركات كبرى</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT: the phone shows a chat, the form opens WhatsApp -->
+    <section class="section section--side contact" id="contact" data-phone="start" data-mode="chat" style="--k:var(--orange)">
+      <div class="wrap">
+        <div class="col">
+          <p class="kicker reveal"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-fr="Contact">تواصلوا معنا</span></p>
+          <h2 data-split data-fr="Parlons de votre projet">لنتحدّث عن مشروعكم</h2>
+          <p class="section__lead reveal" data-fr="Choisissez ce dont vous avez besoin et envoyez votre demande directement sur WhatsApp.">اختاروا ما تحتاجونه وأرسلوا طلبكم مباشرة عبر واتساب.</p>
+
+          <form class="form panel reveal" id="quote" novalidate>
+            <fieldset class="field">
+              <legend data-fr="De quoi avez-vous besoin&nbsp;?">ما الذي تحتاجونه؟</legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Gestion de page">تسيير صفحة</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Création de compte">إنشاء حساب</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Campagne d'influence">حملة مؤثرين</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Sponsoring">سبونسور</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Vidéo">فيديو</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Site web">موقع ويب</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Application">تطبيق</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Automatisation">أتمتة</span></label>
+                <label class="chip"><input type="checkbox" name="need"><span data-fr="Accompagnement académique">مرافقة أكاديمية</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form__pair">
+              <div class="field">
+                <label for="f-name" data-fr="Votre nom">الاسم</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+                <p class="field__error" id="f-name-err" hidden data-fr="Indiquez votre nom, s'il vous plaît.">اكتبوا اسمكم من فضلكم.</p>
+              </div>
+              <div class="field">
+                <label for="f-brand" data-fr="Marque ou page">الماركة أو الصفحة</label>
+                <input id="f-brand" name="brand" type="text" autocomplete="organization" aria-describedby="f-brand-help">
+                <p class="field__help" id="f-brand-help" data-fr="Facultatif">اختياري</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-msg" data-fr="Votre message">رسالتكم</label>
+              <textarea id="f-msg" name="message" rows="3" aria-describedby="f-msg-help"></textarea>
+              <p class="field__help" id="f-msg-help" data-fr="Produit, objectif, budget&nbsp;: tout ce qui nous aide à vous répondre.">المنتج، الهدف، الميزانية: كل ما يساعدنا على الردّ عليكم.</p>
+            </div>
+
+            <button class="btn btn--accent btn--lg form__submit" type="submit">
+              <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+              <span data-fr="Envoyer sur WhatsApp">إرسال عبر واتساب</span>
+            </button>
+            <p class="form__status" role="status" hidden></p>
+          </form>
+
+          <!-- Each link shows only once its value is set in CONFIG (assets/js/main.js): WhatsApp, Instagram, Facebook, TikTok, phone, e-mail -->
+          <ul class="links">
+            <li hidden><a data-contact="whatsapp" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span data-fr="WhatsApp">واتساب</span></a></li>
+            <li hidden><a data-contact="instagram" target="_blank" rel="noopener"><i class="ph-fill ph-instagram-logo" aria-hidden="true"></i><span data-fr="Instagram">إنستغرام</span></a></li>
+            <li hidden><a data-contact="facebook" target="_blank" rel="noopener"><i class="ph-fill ph-facebook-logo" aria-hidden="true"></i><span data-fr="Facebook">فيسبوك</span></a></li>
+            <li hidden><a data-contact="tiktok" target="_blank" rel="noopener"><i class="ph-fill ph-tiktok-logo" aria-hidden="true"></i><span data-fr="TikTok">تيك توك</span></a></li>
+            <li hidden><a data-contact="phone"><i class="ph-fill ph-phone" aria-hidden="true"></i><span data-value dir="ltr"></span></a></li>
+            <li hidden><a data-contact="email"><i class="ph-fill ph-envelope-simple" aria-hidden="true"></i><span data-value dir="ltr">البريد الإلكتروني</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__row">
+        <nav class="footer__nav" aria-label="روابط" data-fr-aria-label="Liens">
+          <a href="#services" data-fr="Services">الخدمات</a>
+          <a href="#influence" data-fr="Influence">المؤثرون</a>
+          <a href="#video" data-fr="Vidéo">الفيديو</a>
+          <a href="#digital" data-fr="Digital">الرقمي</a>
+          <a href="#academic" data-fr="Académique">الأكاديمي</a>
+          <a href="#about" data-fr="À propos">من نحن</a>
+        </nav>
+        <ul class="socials" hidden aria-label="حساباتنا" data-fr-aria-label="Nos réseaux">
+            <li hidden><a data-contact="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-fill ph-instagram-logo" aria-hidden="true"></i></a></li>
+            <li hidden><a data-contact="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph-fill ph-facebook-logo" aria-hidden="true"></i></a></li>
+            <li hidden><a data-contact="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="ph-fill ph-tiktok-logo" aria-hidden="true"></i></a></li>
+            <li hidden><a data-contact="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i></a></li>
+          </ul>
+          <p class="footer__copy"><span dir="ltr">© <span id="year">2026</span> Viz Zora</span></p>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Viz Zora</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/phone.js"></script>
+</body>
+</html>
