@@ -13,7 +13,7 @@
   <meta property="og:title" content="Viz Zora · وكالة اتصال وحلول رقمية">
   <meta property="og:description" content="تسيير صفحات الماركات، حملات المؤثرين وفيديوهات احترافية في الجزائر.">
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
   <!-- Icons: Phosphor (MIT), regular and fill weights -->
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 
   <script>
     // before paint: flag JS, restore the language, play the intro once per visit
@@ -45,11 +45,31 @@
 <body>
   <a class="skip" href="#main" data-fr="Aller au contenu">انتقل إلى المحتوى</a>
 
+  <!-- the logo: defined once, used in the header, intro, phone and footer -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
+    <defs>
+      <linearGradient id="vz-warm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFC55A"/><stop offset="1" stop-color="#FF5A1F"/></linearGradient>
+      <linearGradient id="vz-hot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5A1F"/><stop offset="1" stop-color="#FF2E86"/></linearGradient>
+      <linearGradient id="vz-full" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC55A"/><stop offset=".5" stop-color="#FF5A1F"/><stop offset="1" stop-color="#FF2E86"/></linearGradient>
+      <symbol id="vz-mark" viewBox="0 0 200 200">
+        <path d="M30 52 L80 160" stroke="url(#vz-warm)" stroke-width="28" stroke-linecap="round" fill="none"/>
+        <path d="M104 52 H168 L80 160 H172" stroke="url(#vz-hot)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="68" cy="50" r="13" fill="#FFC55A"/>
+      </symbol>
+      <symbol id="vz-seal" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="86" fill="none" stroke="url(#vz-full)" stroke-width="9"/>
+        <g transform="translate(40 37) scale(.6)"><path d="M30 52 L80 160" stroke="url(#vz-warm)" stroke-width="32" stroke-linecap="round" fill="none"/>
+        <path d="M104 52 H168 L80 160 H172" stroke="url(#vz-hot)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="68" cy="50" r="15" fill="#FFC55A"/></g>
+      </symbol>
+    </defs>
+  </svg>
+
   <div class="ambient" aria-hidden="true"></div>
 
   <!-- intro: the mark rises, then the page enters -->
   <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__mark"><span class="loader__sun"></span></div>
+    <svg class="loader__logo" viewBox="0 0 200 200"><use href="#vz-mark"/></svg>
     <p class="loader__name" dir="ltr">Viz Zora</p>
     <span class="loader__bar"></span>
   </div>
@@ -61,7 +81,7 @@
       <div class="phone" id="phone">
         <div class="phone__face phone__face--back">
           <span class="phone__lens"></span><span class="phone__lens"></span>
-          <span class="phone__logo"></span>
+          <svg class="phone__seal" viewBox="0 0 200 200"><use href="#vz-seal"/></svg>
         </div>
         <div class="phone__face phone__face--front">
           <canvas id="screen" width="720" height="1560"></canvas>
@@ -76,7 +96,7 @@
   <header class="header">
     <div class="wrap header__row">
       <a class="brand" href="#top" aria-label="Viz Zora">
-        <span class="brand__mark" aria-hidden="true"></span>
+        <svg class="brand__logo" viewBox="0 0 200 200" aria-hidden="true"><use href="#vz-mark"/></svg>
         <span class="brand__name" dir="ltr">Viz Zora</span>
       </a>
 
@@ -162,7 +182,7 @@
             <i class="ph-fill ph-storefront cell__wm" aria-hidden="true"></i>
             <span class="chip-ic"><i class="ph ph-layout" aria-hidden="true"></i></span>
             <h3 data-fr="Gestion de pages">تسيير الصفحات</h3>
-            <p data-fr="Nous gérons vos pages au quotidien, avec l'expérience acquise auprès de grandes marques du marché algérien.">نسيّر صفحات ماركتكم يومياً، بخبرة اكتسبناها مع ماركات كبرى في السوق الجزائرية.</p>
+            <p data-fr="Nous gérons vos pages au quotidien, avec l'expérience acquise sur des pages connues comme Maison Cristaline, Family Clean et Amigo.">نسيّر صفحات ماركتكم يومياً، بخبرة اكتسبناها في صفحات معروفة مثل Maison Cristaline و Family Clean و Amigo.</p>
           </article>
 
           <article class="cell panel cell--video reveal" style="--k:var(--amber);--i:1">
@@ -259,7 +279,7 @@
             <div class="panel reveal" style="--k:var(--pink);--i:1">
               <span class="chip-ic"><i class="ph ph-microphone" aria-hidden="true"></i></span>
               <dt data-fr="La voix">الصوت</dt>
-              <dd data-fr="Iman, enregistrée en studio">إيمان، تسجيل في الاستوديو</dd>
+              <dd data-fr="Soltana, enregistrée en studio">سلطانة، تسجيل في الاستوديو</dd>
             </div>
             <div class="panel reveal" style="--k:var(--blue);--i:2">
               <span class="chip-ic"><i class="ph ph-code" aria-hidden="true"></i></span>
@@ -331,7 +351,7 @@
             </button>
             <button type="button" class="work reveal" data-cat="voice" data-kind="video" data-src="assets/media/voice-demo.mp4" style="--k:var(--pink);--i:1">
               <span class="work__media" style="--ar:368/480"><img src="assets/media/posters/voice-demo.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:24</span></span><span class="work__tag" data-fr="Voix off">تعليق صوتي</span></span>
-              <span class="work__cap"><b dir="auto" data-fr="Démo voix">ديمو صوتي</b><span data-fr="Un extrait de la voix d'Iman">عيّنة من صوت إيمان</span></span>
+              <span class="work__cap"><b dir="auto" data-fr="Démo voix">ديمو صوتي</b><span data-fr="Un extrait de la voix de Soltana">عيّنة من صوت سلطانة</span></span>
             </button>
             <button type="button" class="work reveal" data-cat="ai" data-kind="video" data-src="assets/media/ai-analysis.mp4" style="--k:var(--amber);--i:2">
               <span class="work__media" style="--ar:9/16"><img src="assets/media/posters/ai-analysis.jpg" alt="" loading="lazy" decoding="async"><span class="work__play"><i class="ph-fill ph-play" aria-hidden="true"></i><span dir="ltr">0:08</span></span><span class="work__tag" data-fr="Vidéo IA">فيديو AI</span></span>
@@ -430,16 +450,17 @@
         <div class="team">
           <article class="member panel reveal" style="--k:var(--pink)">
             <div class="member__top">
-              <span class="member__avatar" aria-hidden="true"><b>I</b><i class="ph-fill ph-microphone"></i></span>
+              <span class="member__avatar" aria-hidden="true"><b>S</b><i class="ph-fill ph-microphone"></i></span>
               <div>
-                <h3 dir="auto" data-fr="Iman">إيمان</h3>
-                <p class="member__role" data-fr="La voix">الصوت</p>
+                <h3 dir="auto" data-fr="Soltana">سلطانة</h3>
+                <p class="member__role" data-fr="La voix et les pages">الصوت وتسيير الصفحات</p>
               </div>
             </div>
-            <p data-fr="Voix off pour la publicité. La voix d'Iman est la seule chose réelle de notre pub, et c'est celle que vous entendez dans les pubs de nos clients.">تعليق صوتي للإعلانات. صوت إيمان هو الشيء الحقيقي الوحيد في إعلاننا، وهو الصوت الذي تسمعونه في إعلانات زبائننا.</p>
+            <p data-fr="Voix off pour la publicité et gestion de pages, avec une expérience sur des pages connues comme Maison Cristaline, Family Clean et Amigo. Un nom connu sur Instagram et TikTok, et des liens personnels avec de nombreux influenceurs algériens.">تعليق صوتي للإعلانات وتسيير الصفحات، بخبرة في صفحات معروفة مثل Maison Cristaline و Family Clean و Amigo. اسم معروف على إنستغرام وتيك توك، ومعرفة شخصية بالعديد من المؤثرين المعروفين في الجزائر.</p>
             <ul class="tags">
               <li data-fr="Voix off">تعليق صوتي</li>
-              <li data-fr="Publicité">إعلانات</li>
+              <li data-fr="Gestion de pages">تسيير الصفحات</li>
+              <li data-fr="Réseau d'influenceurs">شبكة مؤثرين</li>
               <li data-fr="Darija algérienne">دارجة جزائرية</li>
             </ul>
             <a class="cell__link" href="#work" data-filter="voice">
@@ -452,7 +473,7 @@
             <div class="member__top">
               <span class="member__avatar" aria-hidden="true"><b>Y</b><i class="ph-fill ph-sparkle"></i></span>
               <div>
-                <h3 dir="auto" data-fr="Yasmine">ياسمين</h3>
+                <h3 dir="ltr">Yasmine Bzd</h3>
                 <p class="member__role" data-fr="L'image et la recherche">الصورة والبحث</p>
               </div>
             </div>
@@ -464,6 +485,10 @@
             </ul>
             <a class="cell__link" href="#work" data-filter="ai">
               <span data-fr="Voir les vidéos">شاهدوا الفيديوهات</span>
+              <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
+            </a>
+            <a class="cell__link" href="https://yasminebzd.github.io/" target="_blank" rel="noopener">
+              <span data-fr="Voir le portfolio">شاهدوا البورتفوليو</span>
               <i class="ph ph-arrow-up-right flip" aria-hidden="true"></i>
             </a>
           </article>
@@ -575,6 +600,7 @@
             <li hidden><a data-contact="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="ph-fill ph-tiktok-logo" aria-hidden="true"></i></a></li>
             <li hidden><a data-contact="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i></a></li>
           </ul>
+          <svg class="footer__seal" viewBox="0 0 200 200" aria-hidden="true"><use href="#vz-seal"/></svg>
           <p class="footer__copy"><span dir="ltr">© <span id="year">2026</span> Viz Zora</span></p>
       </div>
       <p class="footer__mark" aria-hidden="true">Viz Zora</p>
@@ -588,7 +614,7 @@
     <div class="lightbox__cap"><b dir="auto"></b><span></span></div>
   </dialog>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/phone.js"></script>
+  <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/phone.js?v=3"></script>
 </body>
 </html>

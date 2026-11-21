@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viz Zora · logo files</title>
+<style>
+  body { margin:0; padding:28px; background:#08060D; color:#F5F2F8; font-family:system-ui,sans-serif; }
+  h1 { margin:0 0 6px; font-size:1.2rem; }
+  p { margin:0 0 20px; color:#A099AE; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+  figure { margin:0; padding:16px; border:1px solid rgba(255,255,255,.12); border-radius:18px; background:#0E0B16; display:grid; gap:12px; justify-items:center; }
+  figure.light { background:#F5F2F8; color:#120D1C; }
+  img { width:140px; height:140px; }
+  figcaption { font-size:.9rem; font-weight:600; }
+  .btns { display:flex; gap:8px; }
+  a, button { font:inherit; font-size:.85rem; font-weight:600; padding:8px 14px; border-radius:999px; border:1px solid currentColor; background:transparent; color:inherit; cursor:pointer; text-decoration:none; }
+</style>
+</head>
+<body>
+<h1>Viz Zora logo files</h1>
+<p>SVG is the master file (sharp at any size). PNG buttons save a 2048 px image for Instagram, TikTok and Facebook.</p>
+<div class="grid" id="grid"></div>
+<script>
+  var FILES = [
+    ['viz-zora-mark', 'Logo', false],
+    ['viz-zora-seal', 'Seal for videos', false],
+    ['viz-zora-app-icon', 'Profile picture', false],
+    ['viz-zora-mark-on-dark', 'Logo on dark', false],
+    ['viz-zora-seal-on-dark', 'Seal on dark', false],
+    ['viz-zora-mark-white', 'White, one colour', false],
+    ['viz-zora-mark-black', 'Black, one colour', true]
+  ];
+  var grid = document.getElementById('grid');
+  FILES.forEach(function (f) {
+    var fig = document.createElement('figure');
+    if (f[2]) fig.className = 'light';
+    var img = new Image();
+    img.src = f[0] + '.svg';
+    img.alt = f[1];
+    var cap = document.createElement('figcaption');
+    cap.textContent = f[1];
+    var btns = document.createElement('div');
+    btns.className = 'btns';
+    var svg = document.createElement('a');
+    svg.href = f[0] + '.svg'; svg.download = f[0] + '.svg'; svg.textContent = 'SVG';
+    var png = document.createElement('button');
+    png.type = 'button'; png.textContent = 'PNG';
+    png.addEventListener('click', function () {
+      var big = new Image();
+      big.onload = function () {
+        var c = document.createElement('canvas');
+        c.width = c.height = 2048;
+        c.getContext('2d').drawImage(big, 0, 0, 2048, 2048);
+        var a = document.createElement('a');
+        a.href = c.toDataURL('image/png'); a.download = f[0] + '.png';
+        a.click();
+      };
+      big.src = f[0] + '.svg';
+    });
+    btns.appendChild(svg); btns.appendChild(png);
+    fig.appendChild(img); fig.appendChild(cap); fig.appendChild(btns);
+    grid.appendChild(fig);
+  });
+</script>
+</body>
+</html>
